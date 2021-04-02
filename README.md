@@ -8,12 +8,12 @@ Este proyecto tiene 3 modelos principales:
 
 | Modelo   | Atributos     |
 | -------- | ------------- |
-| Category | - title
-             - is_public
-             - category_id (_hace referencia al mismo modelo como categoría padre_) |
+| Category | - title       |
+|           |  - is_public  |
+|           |  - category_id (_hace referencia al mismo modelo como categoría padre_) |
 | Kind     | - title       |
-| Bookmark | - title
-             - url         |
+| Bookmark | - title       |
+
 
 Además tiene dos modelos intermedios
 
