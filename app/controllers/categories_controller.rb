@@ -6,6 +6,18 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def api
+    category = Category.find(params[:id])
+    hash = {
+      title: category.title,
+      is_public: category.is_public,
+      parent_category: category.parent_category,
+      children_categories: category.children_categories,
+      bookmarks: category.bookmarks.pluck(:title)
+    }
+    render json: hash
+  end
+
   # GET /categories/1 or /categories/1.json
   def show
   end
