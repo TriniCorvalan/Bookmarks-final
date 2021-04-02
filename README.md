@@ -17,10 +17,8 @@ Además tiene dos modelos intermedios
 
 | Modelo           | Atributos     |
 | ---------------- | ------------- |
-| BookmarkCategory | - bookmark_id
-                     - category_id |
-| BookmarkKind     | - bookmark_id |
-                     - kind_id     |
+| BookmarkCategory | - bookmark_id  - category_id |
+| BookmarkKind     | - bookmark_id - kind_id     |
 
 ### 2. CRUD
 
