@@ -39,8 +39,8 @@ Dentro del modelo podemos agregar la validación de unicidad de nombre y el mét
 
 ```ruby
   class Kind < ApplicationRecord
+    has_many :bookmark_kinds, dependent: :destroy
     has_many :bookmarks, through: :bookmark_kinds
-    has_many :bookmark_kinds
 
     validates :title, uniqueness: true
 
@@ -68,7 +68,7 @@ Además se debe agregar la relación con los marcadores a través de la table in
     belongs_to :parent_category, class_name: "Category", optional: true, foreign_key: 'category_id'
     has_many :children_categories, class_name: "Category", foreign_key: "category_id"
 
-    has_many :bookmark_categories
+    has_many :bookmark_categories, dependent: :destroy
     has_many :bookmarks, through: :bookmark_categories
   end
 ```
@@ -80,7 +80,7 @@ Se puede agregar en el mismo modelo las validaciones necesarias y el método `to
     belongs_to :parent_category, class_name: "Category", optional: true, foreign_key: 'category_id'
     has_many :children_categories, class_name: "Category", foreign_key: "category_id"
     
-    has_many :bookmark_categories
+    has_many :bookmark_categories, dependent: :destroy
     has_many :bookmarks, through: :bookmark_categories
     
 
@@ -119,10 +119,10 @@ Para los marcadores no ocuparemos scaffold, se generará primero el modelo `rail
 
 ```ruby
   class Bookmark < ApplicationRecord
-    has_many :bookmark_categories
+    has_many :bookmark_categories, dependent: :destroy
     has_many :categories, through: :bookmark_categories
     
-    has_many :bookmark_kinds
+    has_many :bookmark_kinds, dependent: :destroy
     has_many :kinds, through: :bookmark_kinds
     
   end
@@ -150,7 +150,7 @@ Agregamos un callback para este método con:
 ```
 al comienzo del controlador.
 
-Y definimos los otros métodos y vistas similares a como los define un scaffold.
+Y definimos los otros métodos y vistas similares a como los define un scaffold o de forma remota con vistas `.js.erb`.
 
 
 ### 3. Formulario remoto para marcadores

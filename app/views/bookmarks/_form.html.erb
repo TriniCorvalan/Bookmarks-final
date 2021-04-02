@@ -12,23 +12,39 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :title, "Title:" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url %>
+    <%= form.label :url, "url:" %>
+    <%= form.text_field :url, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :category_ids %>
-    <%= form.collection_check_boxes :category_ids, Category.all, :id, :title %>
+    <%= form.label :category_ids, "Categories:" %>
+    <%= form.collection_check_boxes :category_ids, Category.all, :id, :title do |cb| %>
+      <div class="form-check">
+        <%= cb.label class: 'form-check-label' do %>
+          <%= cb.check_box class: 'form-check-input' %>
+          <%= cb.text %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="form-check"></div>
   </div>
 
   <div class="field">
-    <%= form.label :kind_ids %>
-    <%= form.collection_check_boxes :kind_ids, Kind.all, :id, :title %>
+    <%= form.label :kind_ids, "Kinds:" %>
+    <%= form.collection_check_boxes :kind_ids, Kind.all, :id, :title do |cb| %>
+      <div class="form-check">
+        <%= cb.label class: 'form-check-label' do %>
+          <%= cb.check_box class: 'form-check-input' %>
+          <%= cb.text %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="actions">
