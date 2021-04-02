@@ -31,15 +31,7 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @bookmark.update(bookmarks_params)
-        format.html { redirect_to @bookmark, notice: "bookmark was successfully updated." }
-        format.json { render :show, status: :ok, location: @bookmark }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @bookmark.errors, status: :unprocessable_entity }
-      end
-    end
+    @bookmark.update(bookmarks_params)
   end
 
   def destroy

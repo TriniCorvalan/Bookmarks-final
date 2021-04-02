@@ -1,4 +1,4 @@
-<%= form_with(model: bookmark, remote: true, id: "form") do |form| %>
+<%= form_with(model: bookmark, remote: true) do |form| %>
   <% if bookmark.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(bookmark.errors.count, "error") %> prohibited this bookmark from being saved:</h2>

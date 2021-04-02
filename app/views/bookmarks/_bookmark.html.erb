@@ -1,17 +1,21 @@
-<tr>
-  <td><%= b.title %></td>
-  <td><%= b.url %></td>
+<tr id="bmk-<%= bookmark.id%>">
+  <td><%= bookmark.title %></td>
+  <td><%= bookmark.url %></td>
   <td>
-    <% b.categories.each do |c| %>
-      <%= c %> <br>
-    <% end %>
+    <ul>
+      <% bookmark.categories.each do |c| %>
+        <li><%= link_to c, category_path(c) %></li>
+      <% end %>
+    </ul>
   </td>
   <td>
-    <% b.kinds.each do |k| %>
-      <%= k %> <br>
-    <% end %>
+    <ul>
+      <% bookmark.kinds.each do |k| %>
+        <li><%= link_to k, kind_path(k) %></li>
+      <% end %>
+    </ul>
   </td>
-  <td><%= link_to 'Show', bookmark_path(b) %></td>
-  <td><%= link_to 'Edit', edit_bookmark_path(b) %></td>
-  <td><%= link_to 'Destroy', bookmark_path(b), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Show', bookmark_path(bookmark) %></td>
+  <td><%= link_to 'Edit', edit_bookmark_path(bookmark), remote: true %></td>
+  <td><%= link_to 'Destroy', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

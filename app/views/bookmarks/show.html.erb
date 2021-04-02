@@ -1,2 +1,33 @@
-<h1>Bookmarks#show</h1>
-<p>Find me in app/views/bookmarks/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @bookmark.title %>
+</p>
+
+<p>
+  <strong>url:</strong>
+  <%= @bookmark.url %>
+</p>
+
+<div>
+  <strong>Categories:</strong>
+  <ul>
+    <% @bookmark.categories.each do |c| %>
+      <li><%= link_to c, category_path(c) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <strong>Kinds:</strong>
+  <ul>
+    <% @bookmark.kinds.each do |k| %>
+      <li><%= link_to k, kind_path(k) %></li>
+    <% end %>
+  </ul>
+    
+</div>
+
+<%= link_to 'Edit', edit_bookmark_path(@bookmark) %> |
+<%= link_to 'Back', bookmarks_path %>
